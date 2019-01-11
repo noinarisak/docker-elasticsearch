@@ -5,7 +5,7 @@
 .PHONY: help build run clean rebuild
 
 DOCKER_HUB_ACCOUNT=noinarisak
-CONTAINER_NAME=elasticsearch
+CONTAINER_NAME=docker-elasticsearch
 CONTAINER_VERSION=6.5.4
 CONTAINER=${DOCKER_HUB_ACCOUNT}/${CONTAINER_NAME}:${CONTAINER_VERSION} 
 
@@ -20,7 +20,7 @@ build: ## Build docker image.
 # run: build ## Run docker image.
 # 	@docker run -it -v "$$(pwd)":/data ${CONTAINER} /bin/bash
 
-publish: ## Push image into Registry
+publish: build ## Push image into Registry
 	@docker push ${CONTAINER} 
 
 clean: ## Clean docker images.
